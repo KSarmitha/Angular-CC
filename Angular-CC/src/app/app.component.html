@@ -1,0 +1,34 @@
+<div style="text-align: center;">
+  <img 
+  src="assets/logo.png" 
+  alt="logo" 
+  height="100" 
+  width="100" 
+  class="logo">
+  <h1 class="app-title">Angular Todo List</h1>
+</div>
+<br>
+<div class="container">
+  <input 
+  type="text" 
+  class="input-text"
+  placeholder="Type a todo"
+  [(ngModel)]="todoValue"
+  (keyup.enter)="addItem()"
+  [@openClose]="isOpen ? 'open' : 'closed'"
+  />
+  <button class="add-btn" (click)="addItem()">Add Todo</button>
+
+  <div class="list">
+    <ul>
+      <li *ngFor="let item of list">
+        <input type="checkbox" 
+        name="isDone"
+        [(ngModel)]="item.isDone"
+        />
+        {{ item.value }}
+        <button (click)="deleteItem(item.id)">Delete</button>
+      </li>
+    </ul>
+  </div>
+</div>
